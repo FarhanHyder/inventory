@@ -1,8 +1,16 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-require('dotenv/config')
+const bodyParser = require("body-parser");
+require('dotenv/config');
 
+app.use(bodyParser.json());
+
+// import routes
+const inventoryRoutes = require('./routes/inventory');
+
+// middleware for routes
+app.use('/inventory', inventoryRoutes);
 
 // routes
 app.get('/', (req,res) =>{
