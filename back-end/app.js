@@ -2,9 +2,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
+const cors = require('cors');
 require('dotenv/config');
 
 app.use(bodyParser.json());
+app.use(cors());
 
 // import routes
 const inventoryRoutes = require('./routes/inventory');
@@ -24,6 +26,8 @@ mongoose.connect(
     { useNewUrlParser: true}, 
     () => console.log('Connected to DB')
     );
+
+
 
 
 app.listen(3000);

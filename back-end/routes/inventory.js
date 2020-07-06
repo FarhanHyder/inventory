@@ -70,7 +70,7 @@ router.delete('/:itemID', async (req,res) =>{
     }
 });
 
-// updating an item by id
+// updating quantity of an item by id
 router.patch('/:itemID', async (req,res) => {
     console.log(req.body);
     
