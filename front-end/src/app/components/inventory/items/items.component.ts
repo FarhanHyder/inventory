@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/app/models/Item/item';
 import { InventoryService } from 'src/app/services/inventory/inventory.service';
+import { MessengerService } from 'src/app/services/messenger/messenger.service';
 
 @Component({
   selector: 'app-items',
@@ -11,10 +12,17 @@ export class ItemsComponent implements OnInit {
 
   items : Item[] = [];
 
-  constructor(private inventoryService : InventoryService) { }
+  constructor(
+    private inventoryService : InventoryService,
+    private messenger : MessengerService) { }
 
   ngOnInit(): void {
     this.loadItems();
+
+    this.messenger.getMsg().subscribe(() => {
+      this.loadItems(); //Event Trigger from messengerService
+      
+    })
   }
 
   loadItems(){
@@ -27,8 +35,22 @@ export class ItemsComponent implements OnInit {
 
   handleDelete(id){
     console.log(id);
-    
-    this.inventoryService.deleteItemByID(id).subscribe(() => console.log('item deleted'));
+  
+    this.inventoryService.deleteItemByID(id)
+    .subscribe(
+      () => {
+        this.messenger.sendMsg({
+          msg: 'Item deleted!',
+          type: 'success'
+        })
+      },
+      () => {
+        this.messenger.sendMsg({
+          msg: 'Item could not be deleted!',
+          type: 'danger'
+        })
+      }
+    )
   }
 
 }

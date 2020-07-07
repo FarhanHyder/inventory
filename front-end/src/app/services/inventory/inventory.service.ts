@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Item } from 'src/app/models/Item/item';
 
 
 @Injectable({
@@ -22,6 +23,10 @@ export class InventoryService {
 
   deleteItemByID(id:string){
     return this.http.delete(this.uri+'/'+id);
+  }
+
+  addnewItem(item:any){
+    return this.http.post(this.uri, item);
   }
 
   updateItemQuantityByID(id:string, newQuantity:number){

@@ -7,11 +7,46 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name" [(ngModel)]="name" autocomplete="off">
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="name">Quantity:</label>
+                    <input type="text" class="form-control" name="quantity" [(ngModel)]="quantity" autocomplete="off">
+                </div>
+                <div class="col">
+                    <label for="name">Quantity Unit:</label>
+                    <select class="custom-select" name="quantity_unit" [(ngModel)]="quantity_unit">
+                        <option value="piece" selected>piece</option>
+                        <option value="lbs" selected>lbs</option>
+                        <option value="gallon">gallon</option>
+                        <option value="meter">meter</option>
+                        <option value="liter">liter</option>
+                      </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="name">Buy price per unit:</label>
+                    <input type="text" class="form-control" name="buy_price" [(ngModel)]="buy_price" autocomplete="off">
+                </div>
+
+                <div class="col">
+                    <label for="name">Sell price per unit:</label>
+                    <input type="text" class="form-control" name="sell_price" [(ngModel)]="sell_price" autocomplete="off">
+                </div>
+                
+            </div>
+            
+           
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Add Item</button>
+        <button type="button" class="btn btn-primary" (click)="handleSubmit()">Add Item</button>
       </div>
     </div>
   </div>
