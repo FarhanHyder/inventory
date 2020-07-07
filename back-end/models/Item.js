@@ -10,5 +10,4 @@ const ItemSchema = mongoose.Schema({
     timestamps: true
 })
 
-
 module.exports = mongoose.model('Items', ItemSchema);
