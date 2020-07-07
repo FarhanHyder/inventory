@@ -25,4 +25,10 @@ export class ItemsComponent implements OnInit {
     })
   }
 
+  handleDelete(id){
+    console.log(id);
+    
+    this.inventoryService.deleteItemByID(id).subscribe(() => console.log('item deleted'));
+  }
+
 }
