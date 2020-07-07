@@ -17,14 +17,14 @@ export class InventoryService {
   }
 
   getItemByID(id:string){
-    return this.http.get(this.uri+'/id/'+id);
+    return this.http.get(this.uri+'/'+id);
   }
 
   deleteItemByID(id:string){
-    return this.http.delete(this.uri+'/id/'+id);
+    return this.http.delete(this.uri+'/'+id);
   }
 
   updateItemQuantityByID(id:string, newQuantity:number){
-    return this.http.patch(this.uri+'/id/'+id, newQuantity);
+    return this.http.patch(this.uri+'/'+id, newQuantity);
   }
 }
