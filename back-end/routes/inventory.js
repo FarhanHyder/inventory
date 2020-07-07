@@ -29,16 +29,6 @@ router.post('/', async (req,res) => {
         sell_price_per_unit: sell_price_per_unit
     });
 
-    // item.save()
-    //     .then(data =>{
-    //         res.json(data);
-    //     })
-    //     .catch(err =>{
-    //         res.json({message: err});
-    //     });
-
-    // another simpler way
-
     try{
         const savedItem = await item.save();
         res.json(savedItem);
