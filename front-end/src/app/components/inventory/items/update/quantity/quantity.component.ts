@@ -35,7 +35,7 @@ export class QuantityComponent implements OnInit {
     .subscribe(
       () => {
         this.messenger.sendMsg({
-          msg: 'Item quantity update!',
+          msg: 'Item quantity updated!',
           type: 'success'
         })
       },
