@@ -11,6 +11,7 @@ import { MessengerService } from 'src/app/services/messenger/messenger.service';
 export class ItemsComponent implements OnInit {
 
   items : Item[] = [];
+  selectedItem : Item = null;
 
   constructor(
     private inventoryService : InventoryService,
@@ -51,6 +52,12 @@ export class ItemsComponent implements OnInit {
         })
       }
     )
+  }
+
+  handleUpdate(item:Item){
+    this.selectedItem = item;
+    console.log(this.selectedItem);
+    
   }
 
 }

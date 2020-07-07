@@ -29,7 +29,7 @@ export class InventoryService {
     return this.http.post(this.uri, item);
   }
 
-  updateItemQuantityByID(id:string, newQuantity:number){
-    return this.http.patch(this.uri+'/'+id, newQuantity);
+  updateItemQuantityByID(id:string, updatedItem:any){
+    return this.http.patch(this.uri+'/'+id, updatedItem);
   }
 }
