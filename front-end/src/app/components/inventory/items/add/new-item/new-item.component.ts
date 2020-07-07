@@ -15,6 +15,8 @@ export class NewItemComponent implements OnInit {
   buy_price:number = 0;
   sell_price:number = 0;
 
+  validationError:string = '';
+
   constructor(
     private inventoryService : InventoryService,
     private messenger : MessengerService
@@ -23,33 +25,49 @@ export class NewItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleSubmit(){
-    const newItem = {
-      name : this.name,
-      quantity: this.quantity,
-      quantity_unit: this.quantity_unit,
-      buy_price_per_unit: this.buy_price,
-      sell_price_per_unit: this.sell_price
+  validate(){
+    if (this.name === '' || this.quantity < 0 || this.buy_price < 0 || this.sell_price < 0)
+    {
+      this.validationError = 'All fields are not filled correctly';
+      return false;
     }
 
-    // console.log(newItem);
-    
+    return true;
+  }
 
-    this.inventoryService.addnewItem(newItem)
-    .subscribe(
-      () => {
-        this.messenger.sendMsg({
-          msg: 'Item added!',
-          type: 'success'
-        })
-      },
-      () => {
-        this.messenger.sendMsg({
-          msg: 'Item could not be added!',
-          type: 'danger'
-        })
+  handleSubmit(){
+    if (this.validate()){
+      const newItem = {
+        name : this.name,
+        quantity: this.quantity,
+        quantity_unit: this.quantity_unit,
+        buy_price_per_unit: this.buy_price,
+        sell_price_per_unit: this.sell_price
       }
-    )
+  
+      this.inventoryService.addnewItem(newItem)
+      .subscribe(
+        () => {
+          this.messenger.sendMsg({
+            msg: 'Item added!',
+            type: 'success'
+          })
+        },
+        () => {
+          this.messenger.sendMsg({
+            msg: 'Item could not be added!',
+            type: 'danger'
+          })
+        }
+      )
+
+      this.validationError = '';
+      this.name = '';
+      this.quantity = 0;
+      this.quantity_unit = 'piece';
+      this.buy_price = 0;
+      this.sell_price = 0;
+    }
   }
 
 }
