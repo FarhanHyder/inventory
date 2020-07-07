@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col">
                     <label for="name">Quantity:</label>
-                    <input type="text" class="form-control" name="quantity" [(ngModel)]="quantity" autocomplete="off">
+                    <input type="number" min="0" class="form-control" name="quantity" [(ngModel)]="quantity" autocomplete="off">
                 </div>
                 <div class="col">
                     <label for="name">Quantity Unit:</label>
@@ -33,12 +33,12 @@
             <div class="row">
                 <div class="col">
                     <label for="name">Buy price per unit:</label>
-                    <input type="text" class="form-control" name="buy_price" [(ngModel)]="buy_price" autocomplete="off">
+                    <input type="number" min="0" class="form-control" name="buy_price" [(ngModel)]="buy_price" autocomplete="off">
                 </div>
 
                 <div class="col">
                     <label for="name">Sell price per unit:</label>
-                    <input type="text" class="form-control" name="sell_price" [(ngModel)]="sell_price" autocomplete="off">
+                    <input type="number" min="0" class="form-control" name="sell_price" [(ngModel)]="sell_price" autocomplete="off">
                 </div>
                 
             </div>
