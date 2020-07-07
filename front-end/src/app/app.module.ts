@@ -7,12 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { ItemsComponent } from './components/inventory/items/items.component';
+import { QuantityComponent } from './components/inventory/items/update/quantity/quantity.component';
+import { NewItemComponent } from './components/inventory/items/add/new-item/new-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ItemsComponent
+    ItemsComponent,
+    QuantityComponent,
+    NewItemComponent
   ],
   imports: [
     BrowserModule,
